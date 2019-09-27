@@ -11,17 +11,23 @@ import javax.persistence.Id;
 @Entity
 public class Inventory implements Serializable {
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+
+	@Column
 	private int inventoryId;
+
+	@Id
 	@Column
 	private int productId;
+
 	@Column
 	private int qty;
+
 	@Column
 	private String pickZone;
+
 	@Column
 	private String packZone;
+
 	@Column
 	private String ShippingArea;
 

@@ -15,7 +15,7 @@ import com.meru.inventory.entity.Inventory;
 import com.meru.inventory.service.InventoryService;
 
 @RestController
-@RequestMapping("/inventory")
+@RequestMapping("/products")
 public class InventoryController {
 	
 	@Autowired
@@ -25,28 +25,28 @@ public class InventoryController {
 		// TODO Auto-generated constructor stub
 	}
 
-	@RequestMapping(method=RequestMethod.GET, value="/invent", produces="application/json")
+	@RequestMapping(method=RequestMethod.GET, value="/inventory/list", produces="application/json")
 	ResponseEntity<List<Inventory>> getAllInventory(){
 		return new ResponseEntity<List<Inventory>>(service.getAllInvetory(),HttpStatus.OK);
 	}
 
-	@RequestMapping(method=RequestMethod.GET, value="/invent/{prodId}", produces="application/json")
+	@RequestMapping(method=RequestMethod.GET, value="/inventory/{prodId}/list", produces="application/json")
 	ResponseEntity<Inventory> getInventoryById(@PathVariable int prodId){
 		return new ResponseEntity<Inventory>(service.getInventoryById(prodId),HttpStatus.OK);
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="/invent/add/{productId}", produces="application/json")
+	@RequestMapping(method=RequestMethod.POST, value="/inventory/add/{productId}", produces="application/json")
 	ResponseEntity<Inventory> addInventory(@PathVariable int productId){
 		Inventory iobj=service.addInventory(productId);
 		return ResponseEntity.ok().body(iobj);
 	}
 	
-	@RequestMapping(method=RequestMethod.PUT, value="/invent/update/{prodId}", produces="application/json")
+	@RequestMapping(method=RequestMethod.PUT, value="/inventory/update/{prodId}", produces="application/json")
 	ResponseEntity<Inventory> updateInventory(@PathVariable int prodId){
 		return new ResponseEntity<Inventory>(HttpStatus.OK);
 	}
 	
-	@RequestMapping(method=RequestMethod.DELETE, value="/invent/delete/{prodId}", produces="application/json")
+	@RequestMapping(method=RequestMethod.DELETE, value="/inventory/delete/{prodId}", produces="application/json")
 	ResponseEntity<Inventory> deleteInventory(@PathVariable int prodId){
 		return new ResponseEntity<Inventory>(HttpStatus.OK);
 	}
